@@ -48,6 +48,7 @@ public class MainClass {
         p1.graphPassengersurvived(passengers);
         p1.graphPassengerClass(passengers);
         p1.graphPassengerAges(passengers);
+        
                 
         
     }}

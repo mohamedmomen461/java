@@ -196,13 +196,10 @@ public class TitanicPassenger {
         
     CategoryChart chart = new CategoryChartBuilder ().width (1024).height (768).title ("Age Histogram").xAxisTitle ("Names").yAxisTitle
 ("Age").build ();
-// 2.Customize Chart
 chart.getStyler ().setLegendPosition (Styler.LegendPosition.InsideNW);
 chart.getStyler ().setHasAnnotations (true);
 chart.getStyler ().setStacked (true);
-// 3.Series
 chart.addSeries ("Passenger's Ages",pNames, pAges);
-// 4.Show it
 new SwingWrapper (chart).displayChart ();
 }
     public void graphPassengerClass(List<TitanicPassenger> passengerList) {
@@ -210,14 +207,11 @@ new SwingWrapper (chart).displayChart ();
      passengerList.stream ().collect (
      Collectors.groupingBy (TitanicPassenger::getPclass, Collectors.counting () ) );
      PieChart chart = new PieChartBuilder ().width (800).height (600).title (getClass ().getSimpleName ()).build ();
-        // Customize Chart
         Color[] sliceColors = new Color[]{new Color (180, 68, 50), new Color (130, 105, 120), new Color (80, 143, 160)};
         chart.getStyler ().setSeriesColors (sliceColors);
-        // Series
         chart.addSeries ("First Class", result.get ("1"));
         chart.addSeries ("Second Class", result.get ("2"));
         chart.addSeries ("Third Class", result.get ("3"));
-        // Show it
         new SwingWrapper (chart).displayChart ();
 }
     public void graphPassengersurvived(List<TitanicPassenger> passengerList) {
@@ -225,13 +219,10 @@ new SwingWrapper (chart).displayChart ();
      passengerList.stream ().collect (
      Collectors.groupingBy (TitanicPassenger::getSurvived, Collectors.counting () ) );
      PieChart chart = new PieChartBuilder ().width (800).height (600).title (getClass ().getSimpleName ()).build ();
-        // Customize Chart
         Color[] sliceColors = new Color[]{new Color (180, 68, 50), new Color (130, 105, 120)};
         chart.getStyler ().setSeriesColors (sliceColors);
-        // Series
-        chart.addSeries ("First Class", result.get("0"));
-        chart.addSeries ("Second Class", result.get("1"));
-        // Show it
+        chart.addSeries ("Not survived", result.get("0"));
+        chart.addSeries ("Survived", result.get("1"));
         new SwingWrapper (chart).displayChart ();
 }
     public void graphPassengerSurvivedGender(List<TitanicPassenger> passengerList) {
@@ -239,13 +230,10 @@ new SwingWrapper (chart).displayChart ();
              passengerList.stream ().filter(p->p.getSurvived().equals("1")).collect (
      Collectors.groupingBy (TitanicPassenger::getSex, Collectors.counting() ) );
      PieChart chart = new PieChartBuilder ().width (800).height (600).title (getClass ().getSimpleName ()).build ();
-        // Customize Chart
         Color[] sliceColors = new Color[]{new Color (180, 68, 50), new Color (130, 105, 120), new Color (80, 143, 160)};
         chart.getStyler ().setSeriesColors (sliceColors);
-        // Series
-        chart.addSeries ("First Class", result.get ("female"));
-        chart.addSeries ("Second Class", result.get ("male"));
-        // Show it
+        chart.addSeries ("Female survived", result.get ("female"));
+        chart.addSeries ("male survived", result.get ("male"));
         new SwingWrapper (chart).displayChart ();
         
 }
